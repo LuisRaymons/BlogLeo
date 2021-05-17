@@ -1,0 +1,19 @@
+# Webempresa.com
+# Redireccion de dominio principal a subdirectorio
+# Copiar y pegar y modificar según necesidades
+# Esta linea no quitarla
+RewriteEngine on
+# Cambiar leosaxadmin.com por su nombre de dominio
+RewriteCond %{HTTP_HOST} ^(www.)?leosaxadmin.com$
+# Cambiar 'subdirectory' por el nombre del subdirectorio que quiere usar
+RewriteCond %{REQUEST_URI} !^/subdirectory/
+# No cambiar estas lineas.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# Cambiar 'subdirectory' por el nombre del subdirectorio que quiere usar
+RewriteRule ^(.*)$ /subdirectory/$1
+# Cambiar leosaxadmin.com por su nombre de dominio
+# Cambiar 'subdirectory' por el nombre del subdirectorio que quiere usar
+# followed by / then the main file for your site, index.php, index.html, etc.
+RewriteCond %{HTTP_HOST} ^(www.)?leosaxadmin.com$
+RewriteRule ^(/)?$ subdirectory/index.php [L]
